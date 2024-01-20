@@ -1,14 +1,20 @@
 <script setup>
+// Fetch Data from API
 const { data } = await useFetch('/api/disney');
 const characters = data;
+onMounted(() => {
+  document.title = "Disney Characters";
+});
 </script>
 
+<!--Main Content & Header Title-->
 <template>
   <main class="main-container">
     <header>
       <strong><h1 class="page-title">DISNEY CHARACTERS</h1></strong>
     </header>
 
+<!--Section for Disney Characters-->
     <section>
       <ul class="characters-list">
         <li v-for="character in characters.data" :key="character.id">
@@ -19,12 +25,14 @@ const characters = data;
         </li>
       </ul>
     </section>
+<!--Footer Section-->
     <footer>
       <p class="footer-text">2024 John Michael Malbas</p>
     </footer>
   </main>
 </template>
 
+<!--Styling section-->
 <style>
 .footer-text {
   background-color: black;
@@ -67,7 +75,6 @@ const characters = data;
 .character-container img {
   margin-top: 10; 
 }
-
 
 </style>
 
